@@ -64,7 +64,7 @@ function gitlog(options, cb) {
     command += ' -- '+options.file
   }
 
-  exec(command, function(err, stdout, stderr) {
+  exec(command,{maxBuffer: 200*1024*1024*1024}, function(err, stdout, stderr) {
     var commits = stdout.split('\n')
 
     // Remove the last blank element from the array
